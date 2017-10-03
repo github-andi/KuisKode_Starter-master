@@ -110,8 +110,30 @@ class Webhook extends CI_Controller {
         // send question no.1
         $this->sendQuestion($event['replyToken'], 1);
       } 
-      else if(strtolower($userMessage) == 'hai'){
-       $message = 'Silakan kirim pesan "MULAI 2" untuk memulai kuis.';
+      else if(strtolower($userMessage) == 'Siapa majikan kamu ?'){
+       $message = 'Andimala Salomo hehehe';
+        $textMessageBuilder = new TextMessageBuilder($message);
+        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+      }
+       else if(strtolower($userMessage) == 'Majikan kamu pernah dapat nilai C kaga ?'){
+       $message = 'Pernah hehehe';
+        $textMessageBuilder = new TextMessageBuilder($message);
+        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+      }
+      
+       else if(strtolower($userMessage) == 'Btw, siapa sih yang ngasih C nya'){
+       $message = 'Bu lilin lilin gitu deh, orangnya baik loehhh,, aku lagi cadel nih soly yeee';
+        $textMessageBuilder = new TextMessageBuilder($message);
+        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+      }
+      
+       else if(strtolower($userMessage) == 'Oh ya majikan kamu galak kaga ?'){
+       $message = 'Engga kok, dia baik (kalo jawab iya, nanti aku didelete -_-)';
+        $textMessageBuilder = new TextMessageBuilder($message);
+        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+      }
+      else if(strtolower($userMessage) == 'Siapa majikan kamu ?'){
+       $message = 'Silakan kirim pesan "Andimala Salomo hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
