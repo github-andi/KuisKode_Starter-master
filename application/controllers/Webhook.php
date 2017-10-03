@@ -110,18 +110,23 @@ class Webhook extends CI_Controller {
         // send question no.1
         $this->sendQuestion($event['replyToken'], 1);
       } 
-      else if(strtolower($userMessage) == 'Siapamajikankamu'){
+      
+      else if(strtolower($userMessage) == 'Siapamajikankamu')
+      {
        $message = 'Andimala Salomo hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
       
-      else if(strtolower($userMessage) == 'Siapa majikan kamu ?'){
+      else if(strtolower($userMessage) == 'Siapa majikan kamu ?')
+      {
        $message = 'Andimala Salomo hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
-       else if(strtolower($userMessage) == 'Majikan kamu pernah dapat nilai C kaga ?'){
+       
+      else if(strtolower($userMessage) == 'Majikan kamu pernah dapat nilai C kaga ?')
+      {
        $message = 'Pernah hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
@@ -133,16 +138,13 @@ class Webhook extends CI_Controller {
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
       
-       else if(strtolower($userMessage) == 'Oh ya majikan kamu galak kaga ?'){
+       else if(strtolower($userMessage) == 'Oh ya majikan kamu galak kaga ?')
+       {
        $message = 'Engga kok, dia baik (kalo jawab iya, nanti aku didelete -_-)';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
-      else if(strtolower($userMessage) == 'Siapa majikan kamu ?'){
-       $message = 'Silakan kirim pesan "Andimala Salomo hehehe';
-        $textMessageBuilder = new TextMessageBuilder($message);
-        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }
+      
       else {
         $message = 'Silakan kirim pesan "MULAI" untuk memulai kuis.';
         $textMessageBuilder = new TextMessageBuilder($message);
