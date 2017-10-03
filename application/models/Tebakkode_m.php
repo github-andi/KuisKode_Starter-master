@@ -34,10 +34,6 @@ class Tebakkode_m extends CI_Model {
   }
 
   // Users
-  function getUser($userId){}
-
-  function saveUser($profile){}
-
   // Question
    // Question
   function getQuestion($questionNum)
