@@ -101,7 +101,7 @@ class Webhook extends CI_Controller {
     $userMessage = $event['message']['text'];
     if($this->user['number'] == 0)
     {
-      if(strtolower($userMessage) == 'mulai')
+      if(strtolower($userMessage) == 'coba')
       {
         // reset score
         $this->tebakkode_m->setScore($this->user['user_id'], 0);
