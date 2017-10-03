@@ -109,7 +109,13 @@ class Webhook extends CI_Controller {
         $this->tebakkode_m->setUserProgress($this->user['user_id'], 1);
         // send question no.1
         $this->sendQuestion($event['replyToken'], 1);
-      } else {
+      } 
+      else if(strtolower($userMessage) == 'hai'){
+       $message = 'Silakan kirim pesan "MULAI 2" untuk memulai kuis.';
+        $textMessageBuilder = new TextMessageBuilder($message);
+        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+      }
+      else {
         $message = 'Silakan kirim pesan "MULAI" untuk memulai kuis.';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
