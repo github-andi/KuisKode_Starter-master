@@ -111,7 +111,7 @@ class Webhook extends CI_Controller {
         $this->sendQuestion($event['replyToken'], 1);
       } 
       
-      elseif(strtolower($userMessage) == 'Siapamajikankamu')
+      elseif(strtolower($userMessage) == 'siapamajikankamu')
       {
         $message = 'Andimala Salomo hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
