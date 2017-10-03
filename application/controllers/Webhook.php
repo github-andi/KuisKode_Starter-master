@@ -101,7 +101,7 @@ class Webhook extends CI_Controller {
     $userMessage = $event['message']['text'];
     if($this->user['number'] == 0)
     {
-      if(strtolower($userMessage) == 'coba')
+      if(strtolower($userMessage) == 'mulai')
       {
         // reset score
         $this->tebakkode_m->setScore($this->user['user_id'], 0);
@@ -111,34 +111,34 @@ class Webhook extends CI_Controller {
         $this->sendQuestion($event['replyToken'], 1);
       } 
       
-      else if(strtolower($userMessage) == 'Siapamajikankamu')
+      elseif(strtolower($userMessage) == 'Siapamajikankamu')
       {
        $message = 'Andimala Salomo hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
       
-      else if(strtolower($userMessage) == 'Siapa majikan kamu ?')
+      elseif(strtolower($userMessage) == 'Siapa majikan kamu ?')
       {
        $message = 'Andimala Salomo hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
        
-      else if(strtolower($userMessage) == 'Majikan kamu pernah dapat nilai C kaga ?')
+      elseif(strtolower($userMessage) == 'Majikan kamu pernah dapat nilai C kaga ?')
       {
        $message = 'Pernah hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
       
-       else if(strtolower($userMessage) == 'Btw, siapa sih yang ngasih C nya'){
+       elseif(strtolower($userMessage) == 'Btw, siapa sih yang ngasih C nya'){
        $message = 'Bu lilin lilin gitu deh, orangnya baik loehhh,, aku lagi cadel nih soly yeee';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
       
-       else if(strtolower($userMessage) == 'Oh ya majikan kamu galak kaga ?')
+       elseif(strtolower($userMessage) == 'Oh ya majikan kamu galak kaga ?')
        {
        $message = 'Engga kok, dia baik (kalo jawab iya, nanti aku didelete -_-)';
         $textMessageBuilder = new TextMessageBuilder($message);
