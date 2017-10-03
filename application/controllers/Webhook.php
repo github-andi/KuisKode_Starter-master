@@ -118,7 +118,7 @@ class Webhook extends CI_Controller {
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
       
-      elseif(strtolower($userMessage) == 'Siapa majikan kamu ?')
+      elseif(strtolower($userMessage) == 'siapa majikan kamu ?')
       {
        $message = 'Andimala Salomo hehehe';
         $textMessageBuilder = new TextMessageBuilder($message);
