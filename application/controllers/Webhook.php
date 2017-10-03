@@ -41,12 +41,6 @@ class Webhook extends CI_Controller {
 
     // log every event requests
     $this->tebakkode_m->log_events($this->signature, $body);
-
-    if(is_array($this->events['events'])){
-      foreach ($this->events['events'] as $event){
-        // your code here
-      }
-    }
  if(is_array($this->events['events'])){
       foreach ($this->events['events'] as $event){
 
