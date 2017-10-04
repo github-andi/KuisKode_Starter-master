@@ -138,14 +138,11 @@ class Webhook extends CI_Controller {
     $this->bot->replyMessage($event['replyToken'], $multiMessageBuilder);
   }
   
-  private function tambahTugas($event)
+  private function tambahTugas($replyToken)
   {
-     if(strtolower($userMessage) == '/tambahtugas')
-      {
    $message = "Masukkan nama tugas :\n";
    $textMessageBuilder = new TextMessageBuilder($message);
    $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-     }
      if(isset($this)){
       $message = "Masukkan nama tugas :\n";
       $textMessageBuilder = new TextMessageBuilder($message);
