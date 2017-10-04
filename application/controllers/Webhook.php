@@ -116,9 +116,6 @@ class Webhook extends CI_Controller {
       $message = "Masukkan Tugas anda :\n\n";  
       $textMessageBuilder = new TextMessageBuilder($message);
       $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-        if(isset(strtolower($userMessage))){
-        $this->tebakkode_m->saveTugas(1);
-        }
       }
   }
   
