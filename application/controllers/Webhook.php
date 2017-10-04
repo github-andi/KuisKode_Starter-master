@@ -99,7 +99,6 @@ class Webhook extends CI_Controller {
   private function textMessage($event)
   {
     $userMessage = $event['message']['text'];
-    
       if(strtolower($userMessage) == '/help')
       {
       $message = "Daftar Perintah :\n";
@@ -114,11 +113,17 @@ class Webhook extends CI_Controller {
       }
       if(strtolower($userMessage) == '/tambahtugas')
       {
-      $this->tambahTugas($event['replyToken']);
+       $this->tambahTugas($event['replyToken'], $user);
       }
-    
   }
   
+  public function tambahTugas($replyToken, $user)
+  {
+   $message111 = "Masukkan nama tugas :\n";
+   $textMessageBuilder111 = new TextMessageBuilder($message111);
+   $response= $this->bot->replyMessage($event['replyToken'], $textMessageBuilder111);
+  }
+
   
   private function stickerMessage($event)
   {
@@ -138,18 +143,7 @@ class Webhook extends CI_Controller {
     $this->bot->replyMessage($event['replyToken'], $multiMessageBuilder);
   }
   
-  public function tambahTugas($replyToken)
-  {
-   $message1 = "Masukkan nama tugas :\n";
-   $textMessageBuilder = new TextMessageBuilder($message1);
-   $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-     if(isset($this)){
-      $message = "Masukkan nama tugas :\n";
-      $textMessageBuilder = new TextMessageBuilder($message);
-      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);  
-     } ; 
-  }
-
+  
   
   public function sendQuestion($replyToken, $questionNum=1)
   {
