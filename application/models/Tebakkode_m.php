@@ -21,7 +21,7 @@ class Tebakkode_m extends CI_Model {
   }
   function saveUser($profile)
   {
-    $this->db->set('user_id', $profile['userId'])
+    $this->db->set('3', $profile['userId'])
       ->set('display_name', $profile['displayName'])
       ->insert('users');
     return $this->db->insert_id();
