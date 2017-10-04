@@ -109,50 +109,7 @@ class Webhook extends CI_Controller {
         $this->tebakkode_m->setUserProgress($this->user['user_id'], 1);
         // send question no.1
         $this->sendQuestion($event['replyToken'], 1);
-      } 
-      
-      elseif(strtolower($userMessage) == 'siapa majikankamu')
-      {
-        $message = 'Andimala Salomo hehehe';
-        $textMessageBuilder = new TextMessageBuilder($message);
-        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }
-      
-      elseif(strtolower($userMessage) == 'siapa majikan kamu ?')
-      {
-       $message = 'Andimala Salomo hehehe';
-        $textMessageBuilder = new TextMessageBuilder($message);
-        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }
-       
-      elseif(strtolower($userMessage) == 'majikan kamu pernah dapat nilai c kaga ?')
-      {
-       $message = 'Pernah hehehe';
-        $textMessageBuilder = new TextMessageBuilder($message);
-        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }
-      
-       elseif(strtolower($userMessage) == 'btw, siapa sih yang ngasih c nya ?')
-       {
-       $message = 'Bu lilin lilin gitu deh, orangnya baik loehhh,, aku lagi cadel nih soly yeee';
-        $textMessageBuilder = new TextMessageBuilder($message);
-        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }
-      
-       elseif(strtolower($userMessage) == 'oh ya majikan kamu galak kaga ?')
-       {
-       $message = 'engga kok, dia baik (kalo jawab iya, nanti aku didelete -_-)';
-        $textMessageBuilder = new TextMessageBuilder($message);
-        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }
-       elseif(strtolower($userMessage) == 'hai')
-       {
-       $message = 'ahh';
-        $textMessageBuilder = new TextMessageBuilder($message);
-        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }
-      
-      else {
+      } else {
         $message = 'Silakan kirim pesan "MULAI" untuk memulai kuis.';
         $textMessageBuilder = new TextMessageBuilder($message);
         $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
