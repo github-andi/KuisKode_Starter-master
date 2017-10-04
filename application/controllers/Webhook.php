@@ -103,10 +103,10 @@ class Webhook extends CI_Controller {
       if(strtolower($userMessage) == '/help')
       {
       $message = 'Daftar Perintah :\n';
-      $message = '/tambahtugas : untuk menambahkan tugas\n';
-      $message = '/tambahjadwal : untuk menambaahkan jadwal\n';
-      $message = '/cektugas : untuk melihat daftar tugas\n';
-      $message = '/cekjadwal : untuk melihat jadwal\n';
+      $message .= '/tambahtugas : untuk menambahkan tugas\n';
+      $message .= '/tambahjadwal : untuk menambaahkan jadwal\n';
+      $message .= '/cektugas : untuk melihat daftar tugas\n';
+      $message .= '/cekjadwal : untuk melihat jadwal\n';
       $textMessageBuilder = new TextMessageBuilder($message);
       $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
