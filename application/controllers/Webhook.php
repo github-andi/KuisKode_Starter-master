@@ -99,7 +99,13 @@ class Webhook extends CI_Controller {
   private function textMessage($event)
   {
     $userMessage = $event['message']['text'];
-      if(strtolower($userMessage) == '/help')
+    if(strtolower($userMessage) == '/tambahtugas')
+      {
+      $message = "Masukkan Tugas anda :\n\n";  
+      $textMessageBuilder = new TextMessageBuilder($message);
+      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+      }  
+    if(strtolower($userMessage) == '/help')
       {
       $message = "Daftar Perintah :\n";
       $message .= "=====================\n\n";
@@ -111,12 +117,7 @@ class Webhook extends CI_Controller {
       $textMessageBuilder = new TextMessageBuilder($message);
       $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
-      elseif(strtolower($userMessage) == '/tambahtugas')
-      {
-      $message = "Masukkan Tugas anda :\n\n";  
-      $textMessageBuilder = new TextMessageBuilder($message);
-      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }
+      
   }
   
 
