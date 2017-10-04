@@ -114,7 +114,7 @@ class Webhook extends CI_Controller {
       }
       if(strtolower($userMessage) == '/tambahtugas')
       {
-     $this->tambahTugas($event['replyToken'], $user);
+     $this->tambahTugas($event['replyToken']);
       }
     
   }
@@ -138,7 +138,7 @@ class Webhook extends CI_Controller {
     $this->bot->replyMessage($event['replyToken'], $multiMessageBuilder);
   }
   
-  private function tambahTugas($replyToken, $user)
+  private function tambahTugas($event)
   {
      if(strtolower($userMessage) == '/tambahtugas')
       {
