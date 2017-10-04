@@ -114,11 +114,12 @@ class Webhook extends CI_Controller {
       }
       if(strtolower($userMessage) == '/tambahtugas')
       {
-     $this->tambahtugas($event['replyToken'], $this->user['user_id']);
+     $this->tambahTugas($event['replyToken'], $this->user['user_id']);
       }
     
   }
-   
+  
+  
   private function stickerMessage($event)
   {
     // create sticker message
@@ -136,6 +137,20 @@ class Webhook extends CI_Controller {
     // send message
     $this->bot->replyMessage($event['replyToken'], $multiMessageBuilder);
   }
+  
+  public function tambaahTugas($replyToken, $this->user['user_id'])
+  {
+   $message = "Masukkan nama tugas :\n";
+   $textMessageBuilder = new TextMessageBuilder($message);
+   $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+     if(isset($this)){
+      $message = "Masukkan nama tugas :\n";
+      $textMessageBuilder = new TextMessageBuilder($message);
+      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);  
+     } ; 
+  }
+
+  
   public function sendQuestion($replyToken, $questionNum=1)
   {
     // get question from database
