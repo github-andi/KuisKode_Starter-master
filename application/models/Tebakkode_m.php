@@ -19,6 +19,14 @@ class Tebakkode_m extends CI_Model {
     if(count($data) > 0) return $data;
     return false;
   }
+  function saveTugas(1)
+  {
+    $this->db->set('user_id', $profile['userId'])
+      ->set('display_name', $profile['displayName'])
+      ->insert('users');
+
+    return $this->db->insert_id();
+  }
   function saveUser($profile)
   {
     $this->db->set('user_id', $profile['userId'])
