@@ -77,12 +77,12 @@ class Webhook extends CI_Controller {
       $profile = $res->getJSONDecodedBody();
 
       // create welcome message
-      $message  = "Terima kasih, " . $profile['displayName'] . "!\n";
-      $message .= "Silahkan ketik pesan \"/help\" untuk bantuan.";
+      $message  = "Salam kenal, " . $profile['displayName'] . "!\n";
+      $message .= "Silakan kirim pesan \"MULAI\" untuk memulai kuis.";
       $textMessageBuilder = new TextMessageBuilder($message);
 
       // create sticker message
-      $stickerMessageBuilder = new StickerMessageBuilder(2, 171);
+      $stickerMessageBuilder = new StickerMessageBuilder(1, 3);
 
       // merge all message
       $multiMessageBuilder = new MultiMessageBuilder();
@@ -99,30 +99,32 @@ class Webhook extends CI_Controller {
   private function textMessage($event)
   {
     $userMessage = $event['message']['text'];
-    if(strtolower($userMessage) == '/tambahtugas')
+    if($this->user['number'] == 0)
+    {
+      if(strtolower($userMessage) == 'mulai')
       {
-      $message = "Masukkan Tugas anda :\n\n";  
-      $textMessageBuilder = new TextMessageBuilder($message);
-      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
-      }  
-    if(strtolower($userMessage) == '/help')
-      {
-      $message = "Daftar Perintah :\n";
-      $message .= "=====================\n\n";
-      $message .= "/tambahtugas : \n untuk menambahkan tugas\n\n";
-      $message .= "/tambahjadwal : \n untuk menambahkan jadwal\n\n";
-      $message .= "/cektugas : \n untuk melihat daftar tugas\n\n";
-      $message .= "/cekjadwal : \n untuk melihat jadwal\n\n";
-      $message .= "=====================\n\n";  
-      $textMessageBuilder = new TextMessageBuilder($message);
-      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+        // reset score
+        $this->tebakkode_m->setScore($this->user['user_id'], 0);
+        // update number progress
+        $this->tebakkode_m->setUserProgress($this->user['user_id'], 1);
+        // send question no.1
+        $this->sendQuestion($event['replyToken'], 1);
+      } 
+      if(strtolower($userMessage) == 'aa'){
+      $this->tebakkode_m->saveTugas(1);
       }
-      
-  }
-  
+      else {
+        $message = 'Silakan kirim pesan "MULAI" untuk memulai kuis.';
+        $textMessageBuilder = new TextMessageBuilder($message);
+        $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+      }
 
-  
-  private function stickerMessage($event)
+    // if user already begin test
+    } else {
+      $this->checkAnswer($userMessage, $event['replyToken']);
+    }
+  }
+   private function stickerMessage($event)
   {
     // create sticker message
     $stickerMessageBuilder = new StickerMessageBuilder(1, 106);
@@ -139,9 +141,6 @@ class Webhook extends CI_Controller {
     // send message
     $this->bot->replyMessage($event['replyToken'], $multiMessageBuilder);
   }
-  
-  
-  
   public function sendQuestion($replyToken, $questionNum=1)
   {
     // get question from database
