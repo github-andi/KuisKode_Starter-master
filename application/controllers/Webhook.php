@@ -113,15 +113,15 @@ class Webhook extends CI_Controller {
       }
       if(strtolower($userMessage) == '/tambahtugas')
       {
-       $this->tambahTugas($event['replyToken'], $user);
+      $message = "Masukkan Tugas anda :\n\n";  
+      $textMessageBuilder = new TextMessageBuilder($message);
+      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+        if(isset(strtolower($userMessage))){
+        $this->tebakkode_m->saveTugas(1);
+        }
       }
   }
   
-  public function tambahTugas($replyToken, $user)
-  {
-     $messageBuilder = new TemplateMessageBuilder("Gunakan mobile app untuk melihat soal");
-     $response = $this->bot->replyMessage($replyToken, $messageBuilder);
-  }
 
   
   private function stickerMessage($event)
