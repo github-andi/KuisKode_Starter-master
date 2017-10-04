@@ -119,9 +119,8 @@ class Webhook extends CI_Controller {
   
   public function tambahTugas($replyToken, $user)
   {
-   $message111 = "Masukkan nama tugas :\n";
-   $textMessageBuilder111 = new TextMessageBuilder($message111);
-   $response= $this->bot->replyMessage($event['replyToken'], $textMessageBuilder111);
+     $messageBuilder = new TemplateMessageBuilder("Gunakan mobile app untuk melihat soal");
+     $response = $this->bot->replyMessage($replyToken, $messageBuilder);
   }
 
   
