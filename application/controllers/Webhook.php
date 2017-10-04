@@ -105,15 +105,34 @@ class Webhook extends CI_Controller {
       $message = "Daftar Perintah :\n";
       $message .= "=====================\n\n";
       $message .= "/tambahtugas : \n untuk menambahkan tugas\n\n";
-      $message .= "/tambahjadwal : \n untuk menambaahkan jadwal\n\n";
+      $message .= "/tambahjadwal : \n untuk menambahkan jadwal\n\n";
       $message .= "/cektugas : \n untuk melihat daftar tugas\n\n";
       $message .= "/cekjadwal : \n untuk melihat jadwal\n\n";
       $message .= "=====================\n\n";  
       $textMessageBuilder = new TextMessageBuilder($message);
       $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
+     
+      if(strtolower($userMessage) == '/tambahtugas')
+      {
+     $this->tambahtugas($event['replyToken'], $this->user['user_id']);
+      }
+    
   }
-   private function stickerMessage($event)
+  
+  public function tambaahtugas($replyToken, $this->user['user_id'])
+  {
+   $message = "Masukkan nama tugas :\n";
+   $textMessageBuilder = new TextMessageBuilder($message);
+   $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
+     if(isset($this)){
+      $message = "Masukkan nama tugas :\n";
+      $textMessageBuilder = new TextMessageBuilder($message);
+      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);  
+     } ; 
+  }
+   
+  private function stickerMessage($event)
   {
     // create sticker message
     $stickerMessageBuilder = new StickerMessageBuilder(1, 106);
