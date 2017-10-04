@@ -99,22 +99,17 @@ class Webhook extends CI_Controller {
   private function textMessage($event)
   {
     $userMessage = $event['message']['text'];
-    if($this->user['number'] == 0)
-    {
+    
       if(strtolower($userMessage) == '/help')
       {
-        // reset score
-        $this->tebakkode_m->setScore($this->user['user_id'], 0);
-        // update number progress
-        $this->tebakkode_m->setUserProgress($this->user['user_id'], 1);
-        // send question no.1
-        $this->sendQuestion($event['replyToken'], 1);
+      $message = 'Daftar Perintah :\n';
+      $message = '/tambahtugas : untuk menambahkan tugas\n';
+      $message = '/tambahjadwal : untuk menambaahkan jadwal\n';
+      $message = '/cektugas : untuk melihat daftar tugas\n';
+      $message = '/cekjadwal : untuk melihat jadwal\n';
+      $textMessageBuilder = new TextMessageBuilder($message);
+      $this->bot->replyMessage($event['replyToken'], $textMessageBuilder);
       }
-
-    // if user already begin test
-    } else {
-      $this->checkAnswer($userMessage, $event['replyToken']);
-    }
   }
    private function stickerMessage($event)
   {
